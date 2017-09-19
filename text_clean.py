@@ -6,7 +6,7 @@
    
    Run the following at the Terminal prompt to get started for Python 2.7:
     
-    $ python text_clean.py --input example_texts
+    $ python2 text_clean.py --input example_texts
     
        or (for Python 3.x)
        
