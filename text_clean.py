@@ -60,7 +60,7 @@ import text_clean_utils # Collection of helper functions in utils file
 # Allows parsing of user-specified options at script call
 from optparse import OptionParser 
 
-# Initialize parser, then adds arguments. Input is required, 
+# Initialize parser, then add arguments. Input directory is required. 
 PARSER = OptionParser()
 
 PARSER.add_option('-i', '--input', dest='input_directory',
@@ -88,12 +88,11 @@ if not os.path.isdir(OUTPUT_DIR):
 def clean_text(input_dir, verbose='True'):
 
     """Takes an input directory and processes all .txt files within, cleaning
-    entire chatbot conversation within each one. Outputs to a separate directory 
-    new conversations with cleaned text in files with the --CLEANED flag
+    all contents within each one. Outputs to a separate directory cleaned 
+    messages in files with the --CLEANED flag
     
     `input_dir` = name of directory that contains input .txt files
-    `verbose` = toggles console output (default True)
-        
+    `verbose` = toggles console output (default True)   
     """
     
     start_time = time.time() # Start runtime
@@ -131,7 +130,7 @@ def clean_text(input_dir, verbose='True'):
         # Clean all messages in current_messages_file
         cleaned_messages = text_clean_utils.clean_text(current_messages_file)
        
-        # Write new passage to file in output directory at the path
+        # Write new messages to file in output directory at the path
             # specified in current_output variable
         with open(new_messages_file, 'w', encoding='utf-8') as file_handle:
             file_handle.write(cleaned_messages)
