@@ -6,11 +6,11 @@ Input should consist one or more messages separated by pipe dividers ('|').
 Run the following at the Terminal prompt to get started for Python 2.7:
     
     $ python2 text_clean.py --input example_texts
-
+    
   or (for Python 3.x):
-
+       
     $ python3 text_clean.py --input example_texts
-  
+    
 -------------------------------
 
 The core spell correcting function requires the Python nltk package.

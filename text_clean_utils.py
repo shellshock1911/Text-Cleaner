@@ -300,13 +300,10 @@ def _remove_gibberish(cleaned_message):
             cleaned_message[i] = ''
             
     # Keep tokens that were not erased
-    final_message = [tok for tok in cleaned_message if tok != '']
-    # Return empty if all that is left is random punctuation and symbols
-    if all(char in PUNCTUATION or char in SYMBOLS for char in ''.join(final_message)):
-        return ''
-    else:           
+    final_message = [tok for tok in cleaned_message if tok != '']           
+                
     # Return tokens that were kept
-        return final_message
+    return final_message
 
 
 def _clean_message(message):
@@ -376,17 +373,16 @@ def clean_text(current_input):
     messages = _read_input(current_input)
     # Iteratively add new messages as they are generated
     cleaned_messages = []
-    # Loop over each message
     for message in messages:
-        # Append empty if message contains no content
         if not message:
+        # If message contains no content, append empty message
             cleaned_message = ''
+        # Otherwise, attempt cleaning the message
         else:
-        # Attempt cleaning the message
             cleaned_message = _clean_message(message)
-        # Append each cleaned message to the list of cleaned messages
+        # Append each new cleaned message to the list of cleaned messages
         cleaned_messages.append(' '.join(_join_punctuation(cleaned_message)))            
-    # Join each message with a pipe divider for final output
+    # Join each message with a divider for final output
     cleaned_messages = ' | '.join(cleaned_messages)
             
     # Return cleaned messages string to write to new file
